@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: box;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.container {
+    background-color: grey;
+    margin: auto;
+    border: 2px solid black;
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    
+}
+
+.box {
+    border: 2px solid black;
+    margin: 0 auto;
+}
+
+.green {
+    background-color: green;
+    height: 200px;
+    width: 200px;
+    border-radius: 100% 0 0 0;
+}
+
+.red {
+    background-color: red;
+    height: 200px;
+    width: 200px;
+    border-radius: 0 100% 0 0;
+}
+
+.yellow {
+    background-color: yellow;
+    height: 200px;
+    width: 200px;
+    border-radius: 0 0 0 100%;
+}
+
+.blue {
+    background-color: blue;
+    height: 200px;
+    width: 200px;
+    border-radius: 0 0 100% 0;
+}
