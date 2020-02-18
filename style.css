@@ -19,8 +19,7 @@ h1 {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
-    border-radius: 100%;
-    
+    border-radius: 100%;   
 }
 
 .box {
