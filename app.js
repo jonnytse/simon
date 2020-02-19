@@ -30,13 +30,13 @@ const onload = () =>  {
         };
         console.log(computerFULLMovesArray);
 
-        for (i = 0; i < numberOfRounds; i++){
-            computerMovesArray.push(computerFULLMovesArray[i]);
-            console.log(computerMovesArray);
-        }
+        // for (i = 0; i < numberOfRounds; i++){
+        //     computerMovesArray.push(computerFULLMovesArray[i]);
+        //     console.log(computerMovesArray);
+        // }
 
-        // computerMovesArray = computerFULLMovesArray.splice(0,1);
-        // console.log(computerMovesArray);
+        computerMovesArray = computerFULLMovesArray.splice(0,1);
+        console.log(computerMovesArray);
       
     });
 
@@ -52,7 +52,7 @@ const onload = () =>  {
         });    
 
         let playerMove = $(".box").index(this);
-        if ((playerMove) === computerFULLMovesArray[gameMove]) {
+        if ((playerMove) === computerMovesArray[gameMove]) {
             console.log("correct");
             gameMove++;
         } else {
