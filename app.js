@@ -1,91 +1,67 @@
 const onload = () =>  {
-console.log('hello');
 
-let computerMovesArray = [];
-let playerMovesArray = [];
-let playerMove = 0
+    let computerFULLMovesArray = [];
+    let computerMovesArray = [];
+    let playerMovesArray = [];
+    const numberOfRounds = 10;
+    let gameMove = 0;
+    let computerTurn;
 
-// for (i = 0; i < 50; i++) {
-//     return (Math.floor(Math.random()*4)+1);
-//     computerMovesArray.push(randomNum);
-//     console.log(computerMovesArray);
-// }
+    const startButton = $("#start-reset");
+    const greenButton = $("#greenQuad");
+    const redButton = $("#redQuad");
+    const blueButton = $("#blueQuad");
+    const yellowButton = $("#yellowQuad");
+    const turnCount = $(".count")
 
-const startButton = $("#start-reset");
-const greenButton = $("#greenQuad");
-const redButton = $("#redQuad");
-const blueButton = $("#blueQuad");
-const yellowButton = $("#yellowQuad");
-const turnCount = $(".count")
+    console.log($(".box").index(greenButton));
+    console.log($(".box").index(redButton));
+    console.log($(".box").index(yellowButton));
+    console.log($(".box").index(blueButton));
 
+    $(startButton).click(function() {
+        win = false;
+        computerFULLMovesArray = [];
+        computerMovesArray = [];
+        playerMovesArray = [];
+        gameMove = 0;
+        for (i = 0; i < numberOfRounds; i++) {
+            computerFULLMovesArray.push((Math.floor(Math.random()*4)));
+        };
+        console.log(computerFULLMovesArray);
+      
+        for (i = 0; i < 5; i++) {
+            computerMovesArray.push(computerFULLMovesArray[i]);
+            break;
+        };
+    });
 
-console.log($(".box").index(greenButton));
-console.log($(".box").index(redButton));
-console.log($(".box").index(yellowButton));
-console.log($(".box").index(blueButton));
-
-
-$(startButton).click(function() {
-    win = false;
-    computerMovesArray = [];
-    playerMovesArray = [];
-    playerMove = 0;
-    for (i = 0; i < 50; i++) {
-        computerMovesArray.push((Math.floor(Math.random()*4)));
-    }
-    console.log(computerMovesArray);
-})
-
-$(".box").click(function() {
-    // console.log($(this).index(".box")); //this console.logs index
-    playerMovesArray.push($(".box").index(this));
-    console.log(playerMovesArray);
-})
-
-
-
-// $(".box").click(function() {
-//    let yellowButtonColor = clicked? 'lightyellow' : 'yellow'
-//    $(this).css('background-color', yellowButtonColor);
-//    clicked = !clicked;
-// });
-
-// $(".box").click(function() {
-//     if ($(this).index(".box") === 0) {
-//         let color = clicked? 'lightgreen' : 'green';
-//         $(this).css('background-color', color);
-//         clicked = !clicked;
-
-//     } else if ($(this).index(".box") === 1) {
-//         let color = clicked? 'pink' : 'red';
-//         $(this).css('background-color', color);
-//         clicked = !clicked;
-
-//     }  else if ($(this).index(".box") === 2) {
-//         let color = clicked? 'lightyellow' : 'yellow';
-//         $(this).css('background-color', color);
-//         clicked = !clicked;
-
-//     } else if ($(this).index(".box") === 3) {
-//         let color = clicked? 'lightblue' : 'blue';
-//         $(this).css('background-color', color);
-//         clicked = !clicked;
-//     } 
-// })
-
-$(".box").click(function(event) {
-    $(event.target).animate({opacity: 0.3}, 50, function() {
-        setTimeout(function() {
-            $(event.target).animate({opacity: 1.0})
-        }, 100);
-    });     
-}); 
+    //OPACITY CLICK
+    $(".box").click(function(event) {
+        // console.log($(this).index(".box")); //this console.logs index
+        playerMovesArray.push($(".box").index(this));
+        console.log(playerMovesArray);
+        $(event.target).animate({opacity: 0.3}, 50, function() {
+            setTimeout(function() {
+                $(event.target).animate({opacity: 1.0})
+            }, 100);
+        });    
+        let playerMove = $(".box").index(this);
+        if ((playerMove) === computerFULLMovesArray[gameMove]) {
+            console.log("correct");
+            gameMove++;
+        } else {
+            console.log("Sorry you lose");
+            // $(".box").off("click");
+        }
+    }); 
 
 
 
 }; //const onload closing curly braces
 $(onload);
 
-// set time out 500
-// opacity
-// click
+// if (playerMove === computerFULLMovesArray[gameMove]) {
+//     console.log("correct!!!!");
+// }
+// gameMove++;
