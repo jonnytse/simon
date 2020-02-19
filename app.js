@@ -74,7 +74,7 @@ $(".box").click(function() {
 // })
 
 $(".box").click(function() {
-   $(this).animate ({opacity: 0.3}, 500, function() {
+   $(this).animate ({opacity: 0.3}, 50, function() {
    });     
 }); 
 
