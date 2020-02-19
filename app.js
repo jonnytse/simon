@@ -29,11 +29,15 @@ const onload = () =>  {
             computerFULLMovesArray.push((Math.floor(Math.random()*4)));
         };
         console.log(computerFULLMovesArray);
-      
-        for (i = 0; i < 5; i++) {
+
+        for (i = 0; i < numberOfRounds; i++){
             computerMovesArray.push(computerFULLMovesArray[i]);
-            break;
-        };
+            console.log(computerMovesArray);
+        }
+
+        // computerMovesArray = computerFULLMovesArray.splice(0,1);
+        // console.log(computerMovesArray);
+      
     });
 
     //OPACITY CLICK
@@ -46,6 +50,7 @@ const onload = () =>  {
                 $(event.target).animate({opacity: 1.0})
             }, 100);
         });    
+
         let playerMove = $(".box").index(this);
         if ((playerMove) === computerFULLMovesArray[gameMove]) {
             console.log("correct");
