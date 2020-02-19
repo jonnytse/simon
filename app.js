@@ -73,9 +73,12 @@ $(".box").click(function() {
 //     } 
 // })
 
-$(".box").click(function() {
-   $(this).animate ({opacity: 0.3}, 50, function() {
-   });     
+$(".box").click(function(event) {
+    $(event.target).animate({opacity: 0.3}, 50, function() {
+        setTimeout(function() {
+            $(event.target).animate({opacity: 1.0})
+        }, 100);
+    });     
 }); 
 
 
