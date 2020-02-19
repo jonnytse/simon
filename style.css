@@ -4,14 +4,18 @@ body {
     box-sizing: box;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 20px;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 button {
     background-color: magenta;
     height: 40px;
+    margin: 30px;
+    margin-top: 5px;
 }
 
 .container {
