@@ -14,10 +14,10 @@ const onload = () =>  {
     const yellowButton = $("#yellowQuad");
     const turnCount = $(".count")
 
-    console.log($(".box").index(greenButton));
-    console.log($(".box").index(redButton));
-    console.log($(".box").index(yellowButton));
-    console.log($(".box").index(blueButton));
+    // console.log($(".box").index(greenButton));
+    // console.log($(".box").index(redButton));
+    // console.log($(".box").index(yellowButton));
+    // console.log($(".box").index(blueButton));
 
     $(startButton).click(function() {
         win = false;
@@ -29,21 +29,21 @@ const onload = () =>  {
             computerFULLMovesArray.push((Math.floor(Math.random()*4)));
         };
         console.log(computerFULLMovesArray);
+        console.log(gameMove);
 
         // for (i = 0; i < numberOfRounds; i++){
         //     computerMovesArray.push(computerFULLMovesArray[i]);
         //     console.log(computerMovesArray);
         // }
 
-        computerMovesArray = computerFULLMovesArray.splice(0,1);
+        computerMovesArray = computerFULLMovesArray.slice(0,gameMove + 1);
         console.log(computerMovesArray);
-      
     });
 
     //OPACITY CLICK
     $(".box").click(function(event) {
         // console.log($(this).index(".box")); //this console.logs index
-        playerMovesArray.push($(".box").index(this));
+        playerMovesArray.push($(this).index(".box"));
         console.log(playerMovesArray);
         $(event.target).animate({opacity: 0.3}, 50, function() {
             setTimeout(function() {
@@ -51,16 +51,34 @@ const onload = () =>  {
             }, 100);
         });    
 
-        let playerMove = $(".box").index(this);
-        if ((playerMove) === computerMovesArray[gameMove]) {
-            console.log("correct");
-            gameMove++;
-        } else {
-            console.log("Sorry you lose");
-            // $(".box").off("click");
+        let playerMove = $(this).index(".box");
+
+        for (i = 0; i < gameMove + 1; i++) {
+            if ((playerMove === computerMovesArray[gameMove]) && (playerMovesArray.length === computerMovesArray.length)) {
+            // if (playerMovesArray === computerMovesArray) {
+            // if ((playerMove) === (computerMovesArray[gameMove]) && (playerMovesArray === computerMovesArray)) {
+                console.log("correct");
+                gameMove++;
+                console.log(gameMove);
+                computerMovesArray = computerFULLMovesArray.slice(0,gameMove + 1);
+                console.log(computerMovesArray);
+                playerMovesArray = []; 
+            // } else {
+            //     console.log("Sorry...you lose");
+                // } else if ((playerMove !== computerMovesArray[gameMove]) && (playerMovesArray.length !== computerMovesArray.length)) {
+                //        console.log("Sorry...you lose"); 
+                // } else if (playerMovesArray !== computerMovesArray) { 
+                //     console.log("Sorry...you lose");
+                } else {
+                    for (i = 0; i < computerMovesArray.length; i++) {
+                        if (playerMove !== computerMovesArray[i]) {
+                            console.log ("Sorry...you lose");
+                        }
+                    }
+                } 
         }
     }); 
-
+//The above can't handle duplicate numbers, AND it does not account for "incorrect" answers
 
 
 }; //const onload closing curly braces
