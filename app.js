@@ -56,28 +56,33 @@ const onload = () =>  {
         }
      
         if (playerMovesArray.length === computerMovesArray.length) {
-            // roundWin()
+            roundWin();
             // console.log("correct");
-            round++;
-            console.log("Correct clicks: " + round);
-            computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
-            // console.log(computerMovesArray);
-            playerMovesArray = []; 
-            // Flash each element in the computer moves array in turn
-            computerMovesArray.forEach((move, index) => {
-                setTimeout(() => {
-                    flash($(".box").eq(move));
-                }, index*700 + 2000);
-            })
+            // round++;
+            // console.log("Correct clicks: " + round);
+            // computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
+            // // console.log(computerMovesArray);
+            // playerMovesArray = []; 
+            // // Flash each element in the computer moves array in turn
+            // computerMovesArray.forEach((move, index) => {
+            //     setTimeout(() => {
+            //         flash($(".box").eq(move));
+            //     }, index*700 + 2000);
+            // })
         }
     }); 
 
     const roundWin = () => {
-        console.log("Correct");
         round++;
+        console.log("Correct clicks: " + round);
         computerMovesArray = computerFULLMovesArray.slice(0, round + 1);
-        console.log(computerMovesArray);
+        // console.log(computerMovesArray);
         playerMovesArray = [];
+        computerMovesArray.forEach((move, index) => {
+            setTimeout(() => {
+                flash($(".box").eq(move));
+            }, index*700 + 2000);
+        })    
     }
 
 }; //const onload closing curly braces
