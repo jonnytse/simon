@@ -37,44 +37,62 @@ const onload = () =>  {
         // }
 
         computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
-        console.log(computerMovesArray);
+        flash($(".box").eq(computerMovesArray[0]));
     });
+
+    const flash = (element) => {
+        $(element).animate({opacity: 0.2}, 50, function() {
+            setTimeout(function() {
+                $(element).animate({opacity: 1.0})
+            }, 400);
+        });  
+    }
 
     //OPACITY CLICK
     $(".box").click(function(event) {
         // console.log($(this).index(".box")); //this console.logs index
         let playerMove = $(this).index(".box");
         playerMovesArray.push(playerMove);
-        console.log(playerMovesArray);
-
-        $(event.target).animate({opacity: 0.3}, 50, function() {
-            setTimeout(function() {
-                $(event.target).animate({opacity: 1.0})
-            }, 100);
-        });    
-
-        for (i = 0; i <= round; i++) {
-            if ((playerMove === computerMovesArray[round]) && (playerMovesArray.length === computerMovesArray.length)) {
-                console.log("correct");
-                round++;
-                console.log(round);
-                computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
-                console.log(computerMovesArray);
-                playerMovesArray = []; 
-            // } else if ((playerMovesArray.length > 0) && (playerMove !== computerMovesArray[round])) {
-            //     console.log("nope");
-            } 
-            
-            // else computerMovesArray.forEach((computerMove, index) => {
-            //        console.log(index, computerMove);
-            //       if ((playerMovesArray.length > 0) && (playerMove !== computerMove[index])) {
-            //           console.log("nope");
-            //       }
-                
-            // });
+        console.log(playerMovesArray); 
+        flash(event.target);
+        
+        for (let i = 0; i < playerMovesArray.length; i++) {
+            if (playerMovesArray[i] !== computerMovesArray[i]) {
+                console.log("wrong");
+                return;
+                // return loss(round);
+            }
         }
+        // for (i = 0; i <= round; i++) {
+        if (playerMovesArray.length === computerMovesArray.length) {
+            // roundWin()
+            console.log("correct");
+            round++;
+            computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
+            console.log(computerMovesArray);
+            playerMovesArray = []; 
+            // Flash each element in the computer moves array in turn
+
+
+        }
+        // };    
     }); 
 
 
 }; //const onload closing curly braces
 $(onload);
+
+// for (i = 0; i < playerMovesArray.length; i++) {
+//     if (playerMovesArray[i] === computerMovesArray[i]) {
+//         console.log('correct');
+//         if (playerMovesArray.length === computerMovesArray.length) {
+//             round++;
+//             computerMovesArray = computerFULLMovesArray.slice(0, round + 1);
+//             console.log('New moves: ' + computerMovesArray);
+//             playerMovesArray = [];
+//         }
+//     } else {
+//         alert('Game over!');
+//         console.log('incorrect');
+//     }
+// }

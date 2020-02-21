@@ -45,28 +45,28 @@ button {
 
 
 .green {
-    background-color: green;
+    background-color: darkgreen;
     height: 215px;
     width: 215px;
     border-radius: 100% 0 0 0;
 }
 
 .red {
-    background-color: red;
+    background-color: darkred;
     height: 215px;
     width: 215px;
     border-radius: 0 100% 0 0;
 }
 
 .yellow {
-    background-color: yellow;
+    background-color: gold;
     height: 215px;
     width: 215px;
     border-radius: 0 0 0 100%;
 }
 
 .blue {
-    background-color: blue;
+    background-color: darkblue;
     height: 215px;
     width: 215px;
     border-radius: 0 0 100% 0;
