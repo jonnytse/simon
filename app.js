@@ -5,7 +5,6 @@ const onload = () =>  {
     let playerMovesArray = [];
     const numberOfRounds = 10;
     let round = 0;
-    let computerTurn;
 
     const startButton = $("#start-reset");
     const greenButton = $("#greenQuad");
@@ -15,7 +14,6 @@ const onload = () =>  {
     const turnCount = $(".count")
 
     $(startButton).click(function() {
-        win = false;
         computerFULLMovesArray = [];
         computerMovesArray = [];
         playerMovesArray = [];
@@ -63,7 +61,13 @@ const onload = () =>  {
             console.log(computerMovesArray);
             playerMovesArray = []; 
             // Flash each element in the computer moves array in turn
-
+            computerMovesArray.forEach(computerMove => {
+                setTimeout(flash($(".box").eq(computerMovesArray[computerMove])), 1000);
+            })
+            
+            // flash($(".box").eq(computerMovesArray[round])) {
+            //     setTimeout (flash(computerMovesArray[round]), 1000 )
+            // };
 
         }
         // };    
