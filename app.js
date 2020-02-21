@@ -21,16 +21,18 @@ const onload = () =>  {
         for (i = 0; i < numberOfRounds; i++) {
             computerFULLMovesArray.push((Math.floor(Math.random()*4)));
         };
-        console.log(computerFULLMovesArray);
-        console.log(round);
+        // console.log(computerFULLMovesArray);
+        // console.log("Round: " + round);
 
         computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
-        console.log(computerMovesArray);
-        flash($(".box").eq(computerMovesArray[0]));
+        // console.log(computerMovesArray);
+        setTimeout(() => {
+            flash($(".box").eq(computerMovesArray[0]));
+        }, 1500);    
     });
 
     const flash = (element) => {
-        $(element).animate({opacity: 0.2}, 50, function() {
+        $(element).animate({opacity: 0.1}, 50, function() {
             setTimeout(() => {
                 $(element).animate({opacity: 1.0})
             }, 200);
@@ -42,7 +44,7 @@ const onload = () =>  {
         // console.log($(this).index(".box")); //this console.logs index
         let playerMove = $(this).index(".box");
         playerMovesArray.push(playerMove);
-        console.log(playerMovesArray); 
+        // console.log(playerMovesArray); 
         flash(event.target);
         
         for (let i = 0; i < playerMovesArray.length; i++) {
@@ -55,36 +57,28 @@ const onload = () =>  {
      
         if (playerMovesArray.length === computerMovesArray.length) {
             // roundWin()
-            console.log("correct");
+            // console.log("correct");
             round++;
+            console.log("Correct clicks: " + round);
             computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
-            console.log(computerMovesArray);
+            // console.log(computerMovesArray);
             playerMovesArray = []; 
             // Flash each element in the computer moves array in turn
             computerMovesArray.forEach((move, index) => {
                 setTimeout(() => {
                     flash($(".box").eq(move));
-                }, index*500 + 500);
+                }, index*700 + 2000);
             })
         }
-        // };    
     }); 
 
+    const roundWin = () => {
+        console.log("Correct");
+        round++;
+        computerMovesArray = computerFULLMovesArray.slice(0, round + 1);
+        console.log(computerMovesArray);
+        playerMovesArray = [];
+    }
 
 }; //const onload closing curly braces
 $(onload);
-
-// for (i = 0; i < playerMovesArray.length; i++) {
-//     if (playerMovesArray[i] === computerMovesArray[i]) {
-//         console.log('correct');
-//         if (playerMovesArray.length === computerMovesArray.length) {
-//             round++;
-//             computerMovesArray = computerFULLMovesArray.slice(0, round + 1);
-//             console.log('New moves: ' + computerMovesArray);
-//             playerMovesArray = [];
-//         }
-//     } else {
-//         alert('Game over!');
-//         console.log('incorrect');
-//     }
-// }
