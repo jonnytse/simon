@@ -14,11 +14,6 @@ const onload = () =>  {
     const yellowButton = $("#yellowQuad");
     const turnCount = $(".count")
 
-    // console.log($(".box").index(greenButton));
-    // console.log($(".box").index(redButton));
-    // console.log($(".box").index(yellowButton));
-    // console.log($(".box").index(blueButton));
-
     $(startButton).click(function() {
         win = false;
         computerFULLMovesArray = [];
@@ -31,12 +26,8 @@ const onload = () =>  {
         console.log(computerFULLMovesArray);
         console.log(round);
 
-        // for (i = 0; i < numberOfRounds; i++){
-        //     computerMovesArray.push(computerFULLMovesArray[i]);
-        //     console.log(computerMovesArray);
-        // }
-
         computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
+        console.log(computerMovesArray);
         flash($(".box").eq(computerMovesArray[0]));
     });
 
@@ -63,7 +54,7 @@ const onload = () =>  {
                 // return loss(round);
             }
         }
-        // for (i = 0; i <= round; i++) {
+     
         if (playerMovesArray.length === computerMovesArray.length) {
             // roundWin()
             console.log("correct");
