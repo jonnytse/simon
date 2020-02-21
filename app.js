@@ -4,7 +4,7 @@ const onload = () =>  {
     let computerMovesArray = [];
     let playerMovesArray = [];
     const numberOfRounds = 10;
-    let gameMove = 0;
+    let round = 0;
     let computerTurn;
 
     const startButton = $("#start-reset");
@@ -24,67 +24,57 @@ const onload = () =>  {
         computerFULLMovesArray = [];
         computerMovesArray = [];
         playerMovesArray = [];
-        gameMove = 0;
+        round = 0;
         for (i = 0; i < numberOfRounds; i++) {
             computerFULLMovesArray.push((Math.floor(Math.random()*4)));
         };
         console.log(computerFULLMovesArray);
-        console.log(gameMove);
+        console.log(round);
 
         // for (i = 0; i < numberOfRounds; i++){
         //     computerMovesArray.push(computerFULLMovesArray[i]);
         //     console.log(computerMovesArray);
         // }
 
-        computerMovesArray = computerFULLMovesArray.slice(0,gameMove + 1);
+        computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
         console.log(computerMovesArray);
     });
 
     //OPACITY CLICK
     $(".box").click(function(event) {
         // console.log($(this).index(".box")); //this console.logs index
-        playerMovesArray.push($(this).index(".box"));
+        let playerMove = $(this).index(".box");
+        playerMovesArray.push(playerMove);
         console.log(playerMovesArray);
+
         $(event.target).animate({opacity: 0.3}, 50, function() {
             setTimeout(function() {
                 $(event.target).animate({opacity: 1.0})
             }, 100);
         });    
 
-        let playerMove = $(this).index(".box");
-
-        for (i = 0; i < gameMove + 1; i++) {
-            if ((playerMove === computerMovesArray[gameMove]) && (playerMovesArray.length === computerMovesArray.length)) {
-            // if (playerMovesArray === computerMovesArray) {
-            // if ((playerMove) === (computerMovesArray[gameMove]) && (playerMovesArray === computerMovesArray)) {
+        for (i = 0; i <= round; i++) {
+            if ((playerMove === computerMovesArray[round]) && (playerMovesArray.length === computerMovesArray.length)) {
                 console.log("correct");
-                gameMove++;
-                console.log(gameMove);
-                computerMovesArray = computerFULLMovesArray.slice(0,gameMove + 1);
+                round++;
+                console.log(round);
+                computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
                 console.log(computerMovesArray);
                 playerMovesArray = []; 
-            // } else {
-            //     console.log("Sorry...you lose");
-                // } else if ((playerMove !== computerMovesArray[gameMove]) && (playerMovesArray.length !== computerMovesArray.length)) {
-                //        console.log("Sorry...you lose"); 
-                // } else if (playerMovesArray !== computerMovesArray) { 
-                //     console.log("Sorry...you lose");
-                } else {
-                    for (i = 0; i < computerMovesArray.length; i++) {
-                        if (playerMove !== computerMovesArray[i]) {
-                            console.log ("Sorry...you lose");
-                        }
-                    }
-                } 
+            // } else if ((playerMovesArray.length > 0) && (playerMove !== computerMovesArray[round])) {
+            //     console.log("nope");
+            } 
+            
+            // else computerMovesArray.forEach((computerMove, index) => {
+            //        console.log(index, computerMove);
+            //       if ((playerMovesArray.length > 0) && (playerMove !== computerMove[index])) {
+            //           console.log("nope");
+            //       }
+                
+            // });
         }
     }); 
-//The above can't handle duplicate numbers, AND it does not account for "incorrect" answers
 
 
 }; //const onload closing curly braces
 $(onload);
-
-// if (playerMove === computerFULLMovesArray[gameMove]) {
-//     console.log("correct!!!!");
-// }
-// gameMove++;
