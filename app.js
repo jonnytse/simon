@@ -61,13 +61,11 @@ const onload = () =>  {
             console.log(computerMovesArray);
             playerMovesArray = []; 
             // Flash each element in the computer moves array in turn
-            computerMovesArray.forEach(computerMove => {
-                setTimeout(flash($(".box").eq(computerMovesArray[computerMove])), 1000);
+            computerMovesArray.forEach(round => {
+                setTimeout(() => {
+                    flash($(".box").eq(computerMovesArray[round]));
+                }, round*1000);
             })
-            
-            // flash($(".box").eq(computerMovesArray[round])) {
-            //     setTimeout (flash(computerMovesArray[round]), 1000 )
-            // };
 
         }
         // };    
