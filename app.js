@@ -31,9 +31,9 @@ const onload = () =>  {
 
     const flash = (element) => {
         $(element).animate({opacity: 0.2}, 50, function() {
-            setTimeout(function() {
+            setTimeout(() => {
                 $(element).animate({opacity: 1.0})
-            }, 400);
+            }, 200);
         });  
     }
 
@@ -61,12 +61,11 @@ const onload = () =>  {
             console.log(computerMovesArray);
             playerMovesArray = []; 
             // Flash each element in the computer moves array in turn
-            computerMovesArray.forEach(round => {
+            computerMovesArray.forEach((move, index) => {
                 setTimeout(() => {
-                    flash($(".box").eq(computerMovesArray[round]));
-                }, round*1000);
+                    flash($(".box").eq(move));
+                }, index*500 + 500);
             })
-
         }
         // };    
     }); 
