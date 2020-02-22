@@ -16,7 +16,7 @@ button {
     border: 1px solid black;
     height: 60px;
     margin: 30px;
-    margin-top: 5px;
+    margin-top: 50px;
     font-weight: 900;
     cursor: pointer;
 }
@@ -31,20 +31,28 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
     border-radius: 100%;   
+    position: relative;
+    /* background-color: black; */
 }
 
 .box {
-    border: 2px solid black;
+    border: 2px solid white;
     margin: 0 auto;
     cursor: pointer;
 }
 
-.box:hover {
-    border-color: lightblue;
+#inner-circle {
+    border-radius: 50%;
+    height: 180px;
+    width: 180px;
+    border: 1px solid white;
+    position: relative;
+    margin: 0 auto;
+    bottom: 349px;
+    background-color: white;
 }
-
 
 .green {
     background-color: darkgreen;
