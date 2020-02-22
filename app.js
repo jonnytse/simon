@@ -14,7 +14,7 @@ const onload = () =>  {
     const turnCount = $(".count")
 
     $(startButton).click(function() {
-        console.log("Get ready to click a colour...");
+        alert("\nTEST YOUR SHORT TERM MEMORY: \n\n1) Watch the colours flash in sequence below. \n2) Use your observation skills to memorise the sequence. \n3) Simply click what you see. It's as easy as that. \n4) Get ready for your first *CLICK*...");
         computerFULLMovesArray = [];
         computerMovesArray = [];
         playerMovesArray = [];
@@ -29,7 +29,7 @@ const onload = () =>  {
         // console.log(computerMovesArray);
         setTimeout(() => {
             flash($(".box").eq(computerMovesArray[0]));
-        }, 2500);    
+        }, 1500);    
     });
 
     const flash = (element) => {
@@ -51,6 +51,7 @@ const onload = () =>  {
         for (let i = 0; i < playerMovesArray.length; i++) {
             if (playerMovesArray[i] !== computerMovesArray[i]) {
                 console.log("wrong");
+                alert("Wrong move! Your score is: " + round);
                 return;
                 // return loss(round);
             }
