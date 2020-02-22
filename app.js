@@ -3,14 +3,14 @@ const onload = () =>  {
     let computerFULLMovesArray = [];
     let computerMovesArray = [];
     let playerMovesArray = [];
-    const numberOfRounds = 10;
+    const numberOfRounds = 50;
     let round = 0;
 
     const startButton = $("#start-reset");
-    const greenButton = $("#greenQuad");
-    const redButton = $("#redQuad");
-    const blueButton = $("#blueQuad");
-    const yellowButton = $("#yellowQuad");
+    // const greenButton = $("#greenQuad");
+    // const redButton = $("#redQuad");
+    // const blueButton = $("#blueQuad");
+    // const yellowButton = $("#yellowQuad");
     const turnCount = $(".count")
 
     $(startButton).click(function() {
