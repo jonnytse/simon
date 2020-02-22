@@ -14,6 +14,7 @@ const onload = () =>  {
     const turnCount = $(".count")
 
     $(startButton).click(function() {
+        console.log("Get ready to click a colour...");
         computerFULLMovesArray = [];
         computerMovesArray = [];
         playerMovesArray = [];
@@ -28,7 +29,7 @@ const onload = () =>  {
         // console.log(computerMovesArray);
         setTimeout(() => {
             flash($(".box").eq(computerMovesArray[0]));
-        }, 1500);    
+        }, 2500);    
     });
 
     const flash = (element) => {
