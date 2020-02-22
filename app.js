@@ -51,7 +51,7 @@ const onload = () =>  {
         for (let i = 0; i < playerMovesArray.length; i++) {
             if (playerMovesArray[i] !== computerMovesArray[i]) {
                 console.log("wrong");
-                alert("\nWrong move! \n\nYour score is: " + round);
+                alert("\n                                   *****  GAME OVER  *****\n\n                                           Your score is: " + round);
                 return;
                 // return loss(round);
             }
