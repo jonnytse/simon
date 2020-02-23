@@ -1,4 +1,4 @@
-const onload = () =>  {
+const onload = () => {  
 
     let computerFULLMovesArray = [];
     let computerMovesArray = [];
@@ -7,11 +7,18 @@ const onload = () =>  {
     let round = 0;
 
     const startButton = $("#start-reset");
+    const turnCount = $(".count")
     // const greenButton = $("#greenQuad");
     // const redButton = $("#redQuad");
     // const blueButton = $("#blueQuad");
-    // const yellowButton = $("#yellowQuad");
-    const turnCount = $(".count")
+    // const yellowButton = $("#yellowQuad");  
+
+    let synth; 
+    const setTone = (element) => {
+        synth = new Tone.Synth().toDestination()
+    }
+
+    setTone();
 
     $(startButton).click(function() {
         alert("\nTEST YOUR SHORT TERM MEMORY: \n\n1) Watch the colours flash in sequence below. \n2) Use your observation skills to memorise the order. \n3) Simply click what you see...it's as easy as that! \n\nGet ready for your first CLICK...");
@@ -23,12 +30,12 @@ const onload = () =>  {
             computerFULLMovesArray.push((Math.floor(Math.random()*4)));
         };
         // console.log(computerFULLMovesArray);
-        // console.log("Round: " + round);
 
         computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
         // console.log(computerMovesArray);
         setTimeout(() => {
             flash($(".box").eq(computerMovesArray[0]));
+            
         }, 1500);    
     });
 
@@ -40,13 +47,22 @@ const onload = () =>  {
         });  
     }
 
-    //OPACITY CLICK
     $(".box").click(function(event) {
         // console.log($(this).index(".box")); //this console.logs index
         let playerMove = $(this).index(".box");
         playerMovesArray.push(playerMove);
         // console.log(playerMovesArray); 
+            if (playerMove === 0 ) {
+                synth.triggerAttackRelease('C4', '8n');
+            } else if (playerMove === 1) {
+                synth.triggerAttackRelease('E4', '8n');
+            } else if (playerMove === 2) {
+                synth.triggerAttackRelease('G4', '8n');
+            } else {
+                synth.triggerAttackRelease('C5', '8n');
+            }
         flash(event.target);
+        
         
         for (let i = 0; i < playerMovesArray.length; i++) {
             if (playerMovesArray[i] !== computerMovesArray[i]) {
@@ -70,7 +86,7 @@ const onload = () =>  {
             //     setTimeout(() => {
             //         flash($(".box").eq(move));
             //     }, index*700 + 2000);
-            // })
+            //})
         }
     }); 
 
@@ -88,7 +104,7 @@ const onload = () =>  {
     }
 
 if (navigator.requestMIDIAccess) {
-    console.log("true");
+    console.log("This brower supports WebMIDI - see smashing.magazine.com article");
 } else {
     console.log("false");
 }  
