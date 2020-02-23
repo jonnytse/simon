@@ -31,11 +31,19 @@ const onload = () => {
         };
         // console.log(computerFULLMovesArray);
 
-        computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
-        // console.log(computerMovesArray);
+        computerMovesArray = computerFULLMovesArray.slice(0,1);
+        console.log(computerMovesArray);
         setTimeout(() => {
             flash($(".box").eq(computerMovesArray[0]));
-            
+            // if ($(".box").eq(computerMovesArray[0]) == 0) {
+            //     synth.triggerAttackRelease('G3', '8n');
+            // } else if ($(".box").eq(computerMovesArray[0]) == 1) {
+            //     synth.triggerAttackRelease('C4', '8n');
+            // } else if ($(".box").eq(computerMovesArray[0]) == 2) {
+            //     synth.triggerAttackRelease('E4', '8n');
+            // } else {
+            //     synth.triggerAttackRelease('G4', '8n')
+            // }    
         }, 1500);    
     });
 
@@ -53,13 +61,13 @@ const onload = () => {
         playerMovesArray.push(playerMove);
         // console.log(playerMovesArray); 
             if (playerMove === 0 ) {
-                synth.triggerAttackRelease('C4', '8n');
+                synth.triggerAttackRelease('G3', '8n');
             } else if (playerMove === 1) {
-                synth.triggerAttackRelease('E4', '8n');
+                synth.triggerAttackRelease('C4', '8n');
             } else if (playerMove === 2) {
-                synth.triggerAttackRelease('G4', '8n');
+                synth.triggerAttackRelease('E4', '8n');
             } else {
-                synth.triggerAttackRelease('C5', '8n');
+                synth.triggerAttackRelease('G4', '8n');
             }
         flash(event.target);
         
@@ -75,18 +83,6 @@ const onload = () => {
      
         if (playerMovesArray.length === computerMovesArray.length) {
             roundWin();
-            // console.log("correct");
-            // round++;
-            // console.log("Correct clicks: " + round);
-            // computerMovesArray = computerFULLMovesArray.slice(0,round + 1);
-            // // console.log(computerMovesArray);
-            // playerMovesArray = []; 
-            // // Flash each element in the computer moves array in turn
-            // computerMovesArray.forEach((move, index) => {
-            //     setTimeout(() => {
-            //         flash($(".box").eq(move));
-            //     }, index*700 + 2000);
-            //})
         }
     }); 
 
@@ -99,6 +95,15 @@ const onload = () => {
         computerMovesArray.forEach((move, index) => {
             setTimeout(() => {
                 flash($(".box").eq(move));
+                if (move === 0 ) {
+                    synth.triggerAttackRelease('G3', '8n');
+                } else if (move === 1) {
+                    synth.triggerAttackRelease('C4', '8n');
+                } else if (move === 2) {
+                    synth.triggerAttackRelease('E4', '8n');
+                } else {
+                    synth.triggerAttackRelease('G4', '8n');
+                }
             }, index*700 + 1200);
         })    
     }
