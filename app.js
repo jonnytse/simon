@@ -29,7 +29,7 @@ const onload = () => {
         for (i = 0; i < numberOfRounds; i++) {
             computerFULLMovesArray.push((Math.floor(Math.random()*4)));
         };
-        // console.log(computerFULLMovesArray);
+        console.log(computerFULLMovesArray);
         computerMovesArray = computerFULLMovesArray.slice(0,1);
         // console.log(computerMovesArray);
         setTimeout(() => {
