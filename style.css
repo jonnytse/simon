@@ -12,33 +12,29 @@ body {
 }
 
 button {
-    background-color: magenta;
+    background-color: darkgrey;
     border: 1px solid black;
     height: 60px;
     margin: 30px;
     margin-top: 50px;
     font-weight: 900;
     cursor: pointer;
+    color: white;
 }
 
 .container {
-    /* background-color: grey; */
+    background-color: black;
     margin: auto;
-    /* border: 2px solid black; */
-    position: relative;
-    height: 500px;
-    width: 500px;
+    height: 520px;
+    width: 520px;
     display: grid;
+    align-items: center;
     grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    align-items: center; 
     border-radius: 100%;   
-    position: relative;
-    /* background-color: black; */
 }
 
 .box {
-    border: 2px solid white;
+    border: 2px solid black;
     margin: 0 auto;
     cursor: pointer;
 }
@@ -47,38 +43,38 @@ button {
     border-radius: 50%;
     height: 180px;
     width: 180px;
-    border: 1px solid white;
+    border: 1px solid black;
     position: relative;
     margin: 0 auto;
-    bottom: 349px;
-    background-color: white;
+    bottom: 350px;
+    background-color: black;
 }
 
 .green {
     background-color: darkgreen;
-    height: 215px;
-    width: 215px;
+    height: 225px;
+    width: 225px;
     border-radius: 100% 0 0 0;
 }
 
 .red {
     background-color: darkred;
-    height: 215px;
-    width: 215px;
+    height: 225px;
+    width: 225px;
     border-radius: 0 100% 0 0;
 }
 
 .yellow {
     background-color: gold;
-    height: 215px;
-    width: 215px;
+    height: 225px;
+    width: 225px;
     border-radius: 0 0 0 100%;
 }
 
 .blue {
     background-color: darkblue;
-    height: 215px;
-    width: 215px;
+    height: 225px;
+    width: 225px;
     border-radius: 0 0 100% 0;
 }
 

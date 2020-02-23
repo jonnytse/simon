@@ -14,7 +14,7 @@ const onload = () =>  {
     const turnCount = $(".count")
 
     $(startButton).click(function() {
-        alert("\nTEST YOUR SHORT TERM MEMORY: \n\n1) Watch the colours flash in sequence below. \n2) Use your observation skills to memorise the sequence. \n3) Simply click what you see...it's as easy as that! \n4) Get ready for your first *CLICK*...");
+        alert("\nTEST YOUR SHORT TERM MEMORY: \n\n1) Watch the colours flash in sequence below. \n2) Use your observation skills to memorise the order. \n3) Simply click what you see...it's as easy as that! \n\nGet ready for your first CLICK...");
         computerFULLMovesArray = [];
         computerMovesArray = [];
         playerMovesArray = [];
@@ -83,9 +83,15 @@ const onload = () =>  {
         computerMovesArray.forEach((move, index) => {
             setTimeout(() => {
                 flash($(".box").eq(move));
-            }, index*700 + 2000);
+            }, index*700 + 1200);
         })    
     }
+
+if (navigator.requestMIDIAccess) {
+    console.log("true");
+} else {
+    console.log("false");
+}  
 
 }; //const onload closing curly braces
 $(onload);
