@@ -30,20 +30,19 @@ const onload = () => {
             computerFULLMovesArray.push((Math.floor(Math.random()*4)));
         };
         // console.log(computerFULLMovesArray);
-
         computerMovesArray = computerFULLMovesArray.slice(0,1);
-        console.log(computerMovesArray);
+        // console.log(computerMovesArray);
         setTimeout(() => {
             flash($(".box").eq(computerMovesArray[0]));
-            // if ($(".box").eq(computerMovesArray[0]) == 0) {
-            //     synth.triggerAttackRelease('G3', '8n');
-            // } else if ($(".box").eq(computerMovesArray[0]) == 1) {
-            //     synth.triggerAttackRelease('C4', '8n');
-            // } else if ($(".box").eq(computerMovesArray[0]) == 2) {
-            //     synth.triggerAttackRelease('E4', '8n');
-            // } else {
-            //     synth.triggerAttackRelease('G4', '8n')
-            // }    
+            if (computerMovesArray[0] === 0) {
+                synth.triggerAttackRelease('A3', '8n');
+            } else if (computerMovesArray[0] === 1) {
+                synth.triggerAttackRelease('D4', '8n');
+            } else if (computerMovesArray[0] === 2) {
+                synth.triggerAttackRelease('F#4', '8n');
+            } else {
+                synth.triggerAttackRelease('A4', '8n')
+            }    
         }, 1500);    
     });
 
@@ -61,13 +60,13 @@ const onload = () => {
         playerMovesArray.push(playerMove);
         // console.log(playerMovesArray); 
             if (playerMove === 0 ) {
-                synth.triggerAttackRelease('G3', '8n');
+                synth.triggerAttackRelease('A3', '8n');
             } else if (playerMove === 1) {
-                synth.triggerAttackRelease('C4', '8n');
+                synth.triggerAttackRelease('D4', '8n');
             } else if (playerMove === 2) {
-                synth.triggerAttackRelease('E4', '8n');
+                synth.triggerAttackRelease('F#4', '8n');
             } else {
-                synth.triggerAttackRelease('G4', '8n');
+                synth.triggerAttackRelease('A4', '8n');
             }
         flash(event.target);
         
@@ -96,13 +95,13 @@ const onload = () => {
             setTimeout(() => {
                 flash($(".box").eq(move));
                 if (move === 0 ) {
-                    synth.triggerAttackRelease('G3', '8n');
+                    synth.triggerAttackRelease('A3', '8n');
                 } else if (move === 1) {
-                    synth.triggerAttackRelease('C4', '8n');
+                    synth.triggerAttackRelease('D4', '8n');
                 } else if (move === 2) {
-                    synth.triggerAttackRelease('E4', '8n');
+                    synth.triggerAttackRelease('F#4', '8n');
                 } else {
-                    synth.triggerAttackRelease('G4', '8n');
+                    synth.triggerAttackRelease('A4', '8n');
                 }
             }, index*700 + 1200);
         })    
