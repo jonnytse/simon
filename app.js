@@ -29,8 +29,8 @@ const onload = () => {
         for (i = 0; i < numberOfRounds; i++) {
             computerFULLMovesArray.push((Math.floor(Math.random()*4)));
         };
-        console.log(computerFULLMovesArray);
-        // computerMovesArray = computerFULLMovesArray.slice(0,1);
+        // console.log(computerFULLMovesArray);
+        computerMovesArray = computerFULLMovesArray.slice(0,1);
         // console.log(computerMovesArray);
         setTimeout(() => {
             flash($(".box").eq(computerMovesArray[0]));
@@ -69,6 +69,8 @@ const onload = () => {
                 synth.triggerAttackRelease('A4', '8n');
             }
         flash(event.target);
+        
+        
         for (let i = 0; i < playerMovesArray.length; i++) {
             if (playerMovesArray[i] !== computerMovesArray[i]) {
                 console.log("wrong");
@@ -77,10 +79,12 @@ const onload = () => {
                 // return loss(round);
             }
         }
+     
         if (playerMovesArray.length === computerMovesArray.length) {
             roundWin();
         }
     }); 
+
     const roundWin = () => {
         round++;
         console.log("Correct clicks: " + round);
@@ -102,6 +106,7 @@ const onload = () => {
             }, index*700 + 1200);
         })    
     }
+
 if (navigator.requestMIDIAccess) {
     console.log("This brower supports WebMIDI - see smashing.magazine.com article");
 } else {
